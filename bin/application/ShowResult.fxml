@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="application.ResultController" alignment="CENTER" spacing="20" stylesheets="@application.css">
+
+    <!-- Title -->
+    <Text text="Quiz Results" styleClass="header-text" />
+
+    <!-- Score Display -->
+    <Text fx:id="scoreText" styleClass="result-text" />
+
+    <!-- Feedback Text -->
+    <Text fx:id="feedbackText" wrappingWidth="300" styleClass="feedback-text" />
+
+    <!-- Action Buttons -->
+    <Button fx:id="retryButton" text="Retry Quiz" onAction="#handleRetry" styleClass="button" />
+    <Button fx:id="exitButton" text="Exit" onAction="#handleExit" styleClass="button" />
+
+</VBox>

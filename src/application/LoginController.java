@@ -79,22 +79,17 @@ public class LoginController {
     @FXML
     public void handleSignup() {
         try {
-            // Check if the stage is null
             if (stage == null) {
                 System.out.println("Stage is null. Make sure the setStage() method is called.");
-                return;  // Exit if the stage is not initialized
+                return;
             }
 
-            // Load the Signup.fxml (assuming you have a signup FXML file)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Signup.fxml"));
             Parent signupRoot = loader.load();
             SignupController signupController = loader.getController();
             signupController.setStage(stage);
-            // Set the new scene for signup
-            Scene signupScene = new Scene(signupRoot, 500, 400);  // Same dimensions for signup scene
-            stage.setScene(signupScene);  // Switch to the signup scene
-
-            // Optionally, set the title for the signup window
+            Scene signupScene = new Scene(signupRoot, 500, 400);
+            stage.setScene(signupScene);
             stage.setTitle("Signup - Quiz Application");
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,16 +99,10 @@ public class LoginController {
 
     private void loadQuizScreen(String username) {
         try {
-            // Load Quiz screen (create your own Quiz.fxml)
         	 FXMLLoader loader = new FXMLLoader(getClass().getResource("Quiz.fxml"));
              Parent root = loader.load();
-
-             // Get the controller of the loaded FXML
              QuizController quizController = loader.getController();
-
-             // Pass the username to the QuizController
              quizController.setUserName(username);
-            // Switch to the quiz screen within the same window
             stage.setScene(new Scene(root, 500, 400));
             stage.setTitle("Quiz - Quiz Application");
         } catch (Exception e) {

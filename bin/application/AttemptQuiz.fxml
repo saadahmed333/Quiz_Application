@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="questionBox" xmlns:fx="http://javafx.com/fxml" fx:controller="application.AttemptQuizController" alignment="CENTER" spacing="10">
-    <Text fx:id="questionText" style="-fx-font-family: Arial; -fx-font-size: 18px;" />
-    <RadioButton fx:id="optionA" />
-    <RadioButton fx:id="optionB" />
-    <RadioButton fx:id="optionC" />
-    <RadioButton fx:id="optionD" />
-    <Button fx:id="nextButton" text="Next" onAction="#handleNextQuestion" />
-    <Button fx:id="finishButton" text="Finish Quiz" onAction="#finishQuiz" visible="false" />
+<VBox fx:id="questionBox" xmlns:fx="http://javafx.com/fxml" fx:controller="application.AttemptQuizController" alignment="CENTER" spacing="20" stylesheets="@attemptQuiz.css">
+    <Text fx:id="questionText" styleClass="text" />
+    <RadioButton fx:id="optionA" styleClass="radio-button" />
+    <RadioButton fx:id="optionB" styleClass="radio-button" />
+    <RadioButton fx:id="optionC" styleClass="radio-button" />
+    <RadioButton fx:id="optionD" styleClass="radio-button" />
+    <Button fx:id="nextButton" text="Next" onAction="#handleNextQuestion" styleClass="button" />
+    <Button fx:id="finishButton" text="Finish Quiz" onAction="#finishQuiz" visible="false" styleClass="button" />
 </VBox>

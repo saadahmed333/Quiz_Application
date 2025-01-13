@@ -9,7 +9,6 @@ public class Question {
     private String optionD;
     private String correctAnswer;
 
-    // Constructor to initialize the question
     public Question(String questionText, String optionA, String optionB, String optionC, String optionD, String correctAnswer) {
         this.questionText = questionText;
         this.optionA = optionA;

@@ -13,10 +13,6 @@ import javafx.stage.Stage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class SignupController {
 
@@ -38,7 +34,7 @@ public class SignupController {
     @FXML
     private Button backButton;
 
-    private Stage stage; // Reference to the current stage
+    private Stage stage;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -49,16 +45,10 @@ public class SignupController {
         try {
         	  FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
               Parent loginRoot = loader.load();
-
-              // Get the LoginController instance
               LoginController loginController = loader.getController();
-              loginController.setStage(stage); // Pass the same stage back to the login controller
-
-              // Set the new scene for login
-              Scene loginScene = new Scene(loginRoot, 500, 400);  // Same dimensions for login scene
-              stage.setScene(loginScene);  // Switch to the login scene
-
-              // Optionally, set the title for the login window
+              loginController.setStage(stage);
+              Scene loginScene = new Scene(loginRoot, 500, 400);
+              stage.setScene(loginScene);
               stage.setTitle("Login - Quiz Application");
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +57,6 @@ public class SignupController {
 
     @FXML
     public void handleSignup() {
-        // Handle signup logic (e.g., validation, saving user data)
         String username = usernameField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
@@ -82,11 +71,8 @@ public class SignupController {
             return;
         }
 
-        // Proceed with saving user data to file or database (example logic)
         try {
-            // For simplicity, let's write to a file (or replace with database logic)
             String userData = username + "," + password;
-            // Save to a file or database here (e.g., users.txt)
 //            File file = new File("C:\\Users\\DELL\\eclipse-workspace\\QuizApp\\src\\users.txt");
             File file = new File("users.txt");
             if (!file.exists()) {
@@ -94,7 +80,7 @@ public class SignupController {
             }
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.write(userData);
-            writer.newLine(); // Add a new line after each entry
+            writer.newLine();
             writer.close();
             System.out.println("User data saved successfully.");
             statusLabel.setText("Signup successful!");

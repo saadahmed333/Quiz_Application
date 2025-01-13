@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignupController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignupController" stylesheets="@application.css" alignment="CENTER" spacing="10">
     
     <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 0 0 0 20;">
         <Button fx:id="backButton" text="← Back" onAction="#handleBack" />

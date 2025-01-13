@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController" alignment="CENTER" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController" stylesheets="@application.css" alignment="CENTER" spacing="10">
     <Label text="Login to Quiz Application" />
      <HBox alignment="CENTER" spacing="10">
 	    <TextField fx:id="usernameField" promptText="Username" prefWidth="250"/>

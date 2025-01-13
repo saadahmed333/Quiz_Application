@@ -1,11 +1,17 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.scene.control.ToggleGroup;
+
+import java.io.IOException;
 import java.util.List;
 
 public class AttemptQuizController {
@@ -18,6 +24,7 @@ public class AttemptQuizController {
     @FXML private RadioButton optionD;
     @FXML private Button nextButton;
     @FXML private Button finishButton;
+    @FXML private Stage stage;
 
     private List<Question> questions;
     private int currentQuestionIndex = 0;
@@ -108,23 +115,40 @@ public class AttemptQuizController {
         if (currentQuestionIndex < questions.size()) {
             displayQuestion(questions.get(currentQuestionIndex)); // Show next question
         } else {
-            showResult(); // Show the result if the quiz is finished
+            showResults(score, questions.size()); // Show the result if the quiz is finished
         }
     }
 
-    private void showResult() {
-        // Clear questionBox and show the final score
-        questionBox.getChildren().clear();
-        Text resultText = new Text("Your score: " + score + " out of " + questions.size());
-        questionBox.getChildren().add(resultText);
-
-        // Hide the next button and show the finish button
-        nextButton.setDisable(true);
-        finishButton.setVisible(true);
+//    private void showResult() {
+//        // Clear questionBox and show the final score
+//        questionBox.getChildren().clear();
+//        Text resultText = new Text("Your score: " + score + " out of " + questions.size());
+//        questionBox.getChildren().add(resultText);
+//
+//        // Hide the next button and show the finish button
+//        nextButton.setDisable(true);
+//        finishButton.setVisible(true);
+//    }
+    
+ // After finishing the quiz
+    private void showResults(int score, int totalQuestions) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowResult.fxml"));
+            Parent root = loader.load();
+            ResultController controller = loader.getController();
+            controller.setStage(stage);
+            controller.setResults(score, totalQuestions);
+            Stage stage = (Stage) nextButton.getScene().getWindow();
+            stage.setScene(new Scene(root, 500, 400));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void finishQuiz() {
-        showResult();  // Show final score and end the quiz
+    	showResults(score, questions.size());
     }
 }

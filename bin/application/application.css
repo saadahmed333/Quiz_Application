@@ -1,8 +1,77 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Style the root container */
+.root {
+    -fx-background-color: #f0f4f8;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-spacing: 15px;
+}
 
-#backButton {
+/* Style the label */
+.label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Style the text fields */
+.text-field,
+.password-field {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #cccccc;
+    -fx-padding: 5px;
     -fx-font-size: 14px;
-    -fx-background-color: #f0f0f0;
-    -fx-border-radius: 5px;
-    -fx-padding: 5px 10px;
+}
+
+/* Style buttons */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #4caf50, #2e7d32);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 8px 20px;
+    -fx-border-color: #1b5e20;
+    -fx-border-width: 1;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #66bb6a, #388e3c);
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #2e7d32, #1b5e20);
+}
+
+/* Style the status label */
+#statusLabel {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-text-fill: red;
+}
+
+
+/* Header Text Styling */
+.header-text {
+    -fx-font-family: Arial;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #2c3e50;
+    -fx-text-alignment: center;
+}
+
+/* Result Text Styling */
+.result-text {
+    -fx-font-family: Arial;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27ae60; /* Green for positive feedback */
+}
+
+/* Feedback Text Styling */
+.feedback-text {
+    -fx-font-family: Arial;
+    -fx-font-size: 16px;
+    -fx-text-fill: #34495e;
+    -fx-text-alignment: center;
 }

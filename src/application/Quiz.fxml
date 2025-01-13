@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.QuizController" alignment="CENTER" spacing="20" >
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.QuizController" stylesheets="@application.css" alignment="CENTER" spacing="20" >
     <!-- Title of the Quiz -->
     <Label text="Quiz Application" style="-fx-font-family: Arial; -fx-font-size: 24px;"/>
 
