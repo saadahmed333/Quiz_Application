@@ -18,7 +18,6 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
-    // Getter methods
     public String getQuestionText() {
         return questionText;
     }

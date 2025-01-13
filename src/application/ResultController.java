@@ -48,19 +48,21 @@ public class ResultController {
     @FXML
     private void handleRetry() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Quiz.fxml"));
-            Parent quizRoot = loader.load();
-            QuizController quizController = loader.getController();
-             quizController.setStage(stage);
-            Scene quizScene = new Scene(quizRoot, 500, 400);
-            stage.setScene(quizScene);
-            stage.setTitle("Retry - Quiz Application");
+            Stage currentStage = (Stage) retryButton.getScene().getWindow();
+            if (currentStage != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Quiz.fxml"));
+                Parent quizRoot = loader.load();
+                QuizController quizController = loader.getController();
+                quizController.setUserName("saad");
+                Scene quizScene = new Scene(quizRoot, 500, 400);
+                stage.setScene(quizScene);
+            } else {
+                System.out.println("Stage not initialized properly!");
+            }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error loading the Quiz.fxml file.");
         }
     }
-
 
     @FXML
     private void handleExit() {

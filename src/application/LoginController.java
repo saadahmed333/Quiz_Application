@@ -30,7 +30,7 @@ public class LoginController {
     @FXML
     private Button signupButton;
 
-    private Stage stage; // Reference to the current stage
+    private Stage stage;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -39,17 +39,16 @@ public class LoginController {
 
     @FXML
     public void handleLogin() {
-//        String username = usernameField.getText();
-//        String password = passwordField.getText();
-    	 String username = "saad";
-         String password = "123";
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+//    	 String username = "saad";
+//         String password = "123";
 
         if (username.isEmpty() || password.isEmpty()) {
             statusLabel.setText("Please fill in all fields.");
             return;
         }
 
-        // File handling for user authentication
 //        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\DELL\\eclipse-workspace\\QuizApp\\src\\users.txt"))) {
         try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
             String line;
@@ -64,7 +63,6 @@ public class LoginController {
 
             if (isAuthenticated) {
                 statusLabel.setText("Login successful!");
-                // Navigate to the quiz screen (replace with your quiz screen logic)
                 System.out.println("User logged in: " + username);
                 loadQuizScreen(username);
             } else {
@@ -99,10 +97,10 @@ public class LoginController {
 
     private void loadQuizScreen(String username) {
         try {
-        	 FXMLLoader loader = new FXMLLoader(getClass().getResource("Quiz.fxml"));
-             Parent root = loader.load();
-             QuizController quizController = loader.getController();
-             quizController.setUserName(username);
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("Quiz.fxml"));
+            Parent root = loader.load();
+            QuizController quizController = loader.getController();
+            quizController.setUserName(username);
             stage.setScene(new Scene(root, 500, 400));
             stage.setTitle("Quiz - Quiz Application");
         } catch (Exception e) {

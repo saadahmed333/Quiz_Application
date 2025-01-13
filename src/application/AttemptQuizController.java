@@ -30,7 +30,6 @@ public class AttemptQuizController {
     private int currentQuestionIndex = 0;
     private int score = 0;
 
-    // Add question arrays for different subjects
     private List<Question> scienceQuestions = List.of(
             new Question("What is the chemical symbol for water?", "H2O", "O2", "CO2", "N2", "H2O"),
             new Question("What planet is known as the Red Planet?", "Earth", "Mars", "Jupiter", "Saturn", "Mars"),
@@ -63,9 +62,7 @@ public class AttemptQuizController {
             new Question("Which of the following is a verb?", "Run", "Blue", "Table", "Happy", "Run")
     );
 
-    // Method to initialize and display questions and answers based on the selected subject
     public void initializeQuiz(String subject) {
-        // Load questions based on the subject
         if ("Science".equals(subject)) {
             questions = scienceQuestions;
         } else if ("Math".equals(subject)) {
@@ -88,49 +85,34 @@ public class AttemptQuizController {
         optionC.setText(question.getOptionC());
         optionD.setText(question.getOptionD());
 
-        // Set the ToggleGroup for the options to group them together
         ToggleGroup group = new ToggleGroup();
         optionA.setToggleGroup(group);
         optionB.setToggleGroup(group);
         optionC.setToggleGroup(group);
         optionD.setToggleGroup(group);
 
-        nextButton.setDisable(false);  // Enable the next button
-        finishButton.setVisible(false);  // Hide the finish button initially
+        nextButton.setDisable(false);
+        finishButton.setVisible(false);
     }
 
     @FXML
     private void handleNextQuestion() {
-        // Get the selected option
         ToggleGroup group = (ToggleGroup) optionA.getToggleGroup();
         RadioButton selectedOption = (RadioButton) group.getSelectedToggle();
 
-        // Check if the selected option is correct
         if (selectedOption != null && selectedOption.getText().equals(questions.get(currentQuestionIndex).getCorrectAnswer())) {
-            score++;  // Increase score if the answer is correct
+            score++;
         }
 
-        currentQuestionIndex++;  // Move to the next question
+        currentQuestionIndex++;
 
         if (currentQuestionIndex < questions.size()) {
-            displayQuestion(questions.get(currentQuestionIndex)); // Show next question
+            displayQuestion(questions.get(currentQuestionIndex));
         } else {
-            showResults(score, questions.size()); // Show the result if the quiz is finished
+            showResults(score, questions.size());
         }
     }
-
-//    private void showResult() {
-//        // Clear questionBox and show the final score
-//        questionBox.getChildren().clear();
-//        Text resultText = new Text("Your score: " + score + " out of " + questions.size());
-//        questionBox.getChildren().add(resultText);
-//
-//        // Hide the next button and show the finish button
-//        nextButton.setDisable(true);
-//        finishButton.setVisible(true);
-//    }
     
- // After finishing the quiz
     private void showResults(int score, int totalQuestions) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowResult.fxml"));
@@ -139,6 +121,7 @@ public class AttemptQuizController {
             controller.setStage(stage);
             controller.setResults(score, totalQuestions);
             Stage stage = (Stage) nextButton.getScene().getWindow();
+            controller.setStage(stage);
             stage.setScene(new Scene(root, 500, 400));
             stage.show();
         } catch (IOException e) {
