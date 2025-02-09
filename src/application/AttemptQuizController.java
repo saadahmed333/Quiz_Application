@@ -1,6 +1,5 @@
 package application;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,21 +9,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleGroup;
-
 import java.io.IOException;
 import java.util.List;
 
 public class AttemptQuizController {
 
-    @FXML private VBox questionBox;
-    @FXML private Text questionText;
-    @FXML private RadioButton optionA;
-    @FXML private RadioButton optionB;
-    @FXML private RadioButton optionC;
-    @FXML private RadioButton optionD;
-    @FXML private Button nextButton;
-    @FXML private Button finishButton;
-    @FXML private Stage stage;
+    public VBox questionBox;
+    public Text questionText;
+    public RadioButton optionA;
+    public RadioButton optionB;
+    public RadioButton optionC;
+    public RadioButton optionD;
+    public Button nextButton;
+    public Button finishButton;
+    public Stage stage;
 
     private List<Question> questions;
     private int currentQuestionIndex = 0;
@@ -95,8 +93,7 @@ public class AttemptQuizController {
         finishButton.setVisible(false);
     }
 
-    @FXML
-    private void handleNextQuestion() {
+    public void handleNextQuestion() {
         ToggleGroup group = (ToggleGroup) optionA.getToggleGroup();
         RadioButton selectedOption = (RadioButton) group.getSelectedToggle();
 
@@ -113,7 +110,7 @@ public class AttemptQuizController {
         }
     }
     
-    private void showResults(int score, int totalQuestions) {
+    public void showResults(int score, int totalQuestions) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowResult.fxml"));
             Parent root = loader.load();
@@ -130,8 +127,7 @@ public class AttemptQuizController {
     }
 
 
-    @FXML
-    private void finishQuiz() {
+    public void finishQuiz() {
     	showResults(score, questions.size());
     }
 }

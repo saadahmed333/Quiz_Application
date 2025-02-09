@@ -1,8 +1,6 @@
 package application;
 
 import java.io.IOException;
-
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,19 +10,11 @@ import javafx.stage.Stage;
 
 public class ResultController {
 
-    @FXML
-    private Text scoreText;
-
-    @FXML
-    private Text feedbackText;
-
-    @FXML
-    private Button retryButton;
-
-    @FXML
-    private Button exitButton;
-    
-    private Stage stage;
+	public Text scoreText;
+	public Text feedbackText;
+	public Button retryButton;
+	public Button exitButton;
+	public Stage stage;
     
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -45,8 +35,7 @@ public class ResultController {
         }
     }
 
-    @FXML
-    private void handleRetry() {
+    public void handleRetry() {
         try {
             Stage currentStage = (Stage) retryButton.getScene().getWindow();
             if (currentStage != null) {
@@ -64,8 +53,7 @@ public class ResultController {
         }
     }
 
-    @FXML
-    private void handleExit() {
+    public void handleExit() {
         System.out.println("Exiting the application...");
         System.exit(0);
     }

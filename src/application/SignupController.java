@@ -1,6 +1,5 @@
 package application;
 
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -9,38 +8,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
 public class SignupController {
 
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private PasswordField confirmPasswordField;
-
-    @FXML
-    private Label statusLabel;
-
-    @FXML
-    private Button signupButton;
-
-    @FXML
-    private Button backButton;
-
-    private Stage stage;
+    public TextField usernameField;
+    public PasswordField passwordField;
+    public PasswordField confirmPasswordField;
+    public Label statusLabel;
+    public Button signupButton;
+    public Button backButton;
+    public Stage stage;
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    @FXML
     public void handleBack() {
         try {
         	  FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
@@ -55,7 +40,6 @@ public class SignupController {
         }
     }
 
-    @FXML
     public void handleSignup() {
         String username = usernameField.getText();
         String password = passwordField.getText();

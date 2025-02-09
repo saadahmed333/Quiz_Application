@@ -1,6 +1,5 @@
 package application;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,15 +11,11 @@ import javafx.collections.FXCollections;
 
 public class QuizController {
 
-    @FXML
-    private Label userNameLabel;
-    @FXML
-    private ComboBox<String> subjectComboBox;
-    @FXML
-    private Label statusLabel;
-    private String userName;
-    @FXML
-    private Stage stage;
+    public Label userNameLabel;
+    public ComboBox<String> subjectComboBox;
+    public Label statusLabel;
+    public String userName;
+    public Stage stage;
     
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -32,13 +27,11 @@ public class QuizController {
         userNameLabel.setText("Hello, " + userName);
     }
 
-    @FXML
     public void initialize() {
         subjectComboBox.setItems(FXCollections.observableArrayList("Math", "Science", "Computer", "English"));
     }
 
-    @FXML
-    private void handleStartQuiz() {
+    public void handleStartQuiz() {
     	String selectedSubject = subjectComboBox.getValue();
     	System.out.println("selected subjects" + selectedSubject);
     	if (selectedSubject == null) {
